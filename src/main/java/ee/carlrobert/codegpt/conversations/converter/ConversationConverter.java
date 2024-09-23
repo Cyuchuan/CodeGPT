@@ -7,6 +7,6 @@ import ee.carlrobert.codegpt.util.BaseConverter;
 public class ConversationConverter extends BaseConverter<Conversation> {
 
   public ConversationConverter() {
-    super(new TypeReference<>() {});
+    super(new TypeReference<>(){});
   }
 }

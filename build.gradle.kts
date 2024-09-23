@@ -43,6 +43,7 @@ intellij {
   version.set(properties("platformVersion"))
   type.set(properties("platformType"))
   plugins.set(listOf("java", "PythonCore:241.14494.240", "Git4Idea"))
+  downloadSources.set(properties("downloadSource").get().toBoolean())
 }
 
 changelog {
@@ -68,9 +69,23 @@ dependencies {
   testImplementation(kotlin("test"))
 }
 
+
+task("normalTask"){
+  println("normalTask")
+}
+
 tasks.register<Exec>("updateSubmodules") {
+  println("test1")
+
   workingDir(rootDir)
   commandLine("git", "submodule", "update", "--init", "--recursive")
+}
+
+tasks.register<Copy>("copyLlamaSubmodule") {
+  println("test2")
+  dependsOn("updateSubmodules")
+  from(layout.projectDirectory.file("src/main/cpp/llama.cpp"))
+  into(layout.buildDirectory.dir("idea-sandbox/plugins/CodeGPT/llama.cpp"))
 }
 
 tasks {

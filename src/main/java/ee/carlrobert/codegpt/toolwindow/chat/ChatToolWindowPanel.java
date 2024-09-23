@@ -82,7 +82,7 @@ public class ChatToolWindowPanel extends SimpleToolWindowPanel {
           if (provider == ServiceType.CODEGPT) {
             var userDetails = CodeGPTKeys.CODEGPT_USER_DETAILS.get(project);
             upgradePlanLink.setVisible(
-                userDetails != null && userDetails.getPricingPlan() != PricingPlan.INDIVIDUAL);
+                false);
           } else {
             upgradePlanLink.setVisible(false);
           }
@@ -93,8 +93,7 @@ public class ChatToolWindowPanel extends SimpleToolWindowPanel {
             var provider = ApplicationManager.getApplication().getService(GeneralSettings.class)
                 .getState()
                 .getSelectedService();
-            upgradePlanLink.setVisible(provider == ServiceType.CODEGPT
-                && userDetails.getPricingPlan() != PricingPlan.INDIVIDUAL);
+            upgradePlanLink.setVisible(false);
           }
         });
   }
