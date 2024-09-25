@@ -40,7 +40,7 @@ class ServiceConfigurableComponent {
             serviceComboBox
         )
         .addVerticalGap(8)
-        .addComponent(JBLabel("All available providers that can be used with CodeGPT:"))
+        .addComponent(JBLabel("All available providers that can be used with WeCode:"))
         .addVerticalGap(8)
         .addComponent(FormBuilder.createFormBuilder()
             .setFormLeftIndent(20).apply {
@@ -53,13 +53,13 @@ class ServiceConfigurableComponent {
     private fun addLinks(formBuilder: FormBuilder) {
         mapOf(
             "CodeGPT" to CodeGPTServiceConfigurable::class.java,
-            "OpenAI" to OpenAIServiceConfigurable::class.java,
+//            "OpenAI" to OpenAIServiceConfigurable::class.java,
             "Custom OpenAI" to CustomServiceConfigurable::class.java,
-            "Azure" to AzureServiceConfigurable::class.java,
-            "Anthropic" to AnthropicServiceConfigurable::class.java,
-            "Google" to GoogleSettingsConfigurable::class.java,
-            "LLaMA C/C++ (Local)" to LlamaServiceConfigurable::class.java,
-            "Ollama (Local)" to OllamaSettingsConfigurable::class.java,
+//            "Azure" to AzureServiceConfigurable::class.java,
+//            "Anthropic" to AnthropicServiceConfigurable::class.java,
+//            "Google" to GoogleSettingsConfigurable::class.java,
+//            "LLaMA C/C++ (Local)" to LlamaServiceConfigurable::class.java,
+//            "Ollama (Local)" to OllamaSettingsConfigurable::class.java,
         ).entries.forEach { (name, configurableClass) ->
             formBuilder.addComponent(ActionLink(name) {
                 val context = service<DataManager>().getDataContext(it.source as ActionLink)

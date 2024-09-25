@@ -70,19 +70,13 @@ dependencies {
 }
 
 
-task("normalTask"){
-  println("normalTask")
-}
-
 tasks.register<Exec>("updateSubmodules") {
-  println("test1")
 
   workingDir(rootDir)
   commandLine("git", "submodule", "update", "--init", "--recursive")
 }
 
 tasks.register<Copy>("copyLlamaSubmodule") {
-  println("test2")
   dependsOn("updateSubmodules")
   from(layout.projectDirectory.file("src/main/cpp/llama.cpp"))
   into(layout.buildDirectory.dir("idea-sandbox/plugins/CodeGPT/llama.cpp"))
@@ -135,10 +129,10 @@ tasks {
 
   prepareSandbox {
     enabled = true
-    dependsOn("updateSubmodules")
-    from("src/main/cpp/llama.cpp") {
-      into("CodeGPT/llama.cpp")
-    }
+//    dependsOn("updateSubmodules")
+//    from("src/main/cpp/llama.cpp") {
+//      into("CodeGPT/llama.cpp")
+//    }
   }
 
   signPlugin {

@@ -114,12 +114,12 @@ public final class ChatToolWindowContentManager {
 
   public @NotNull ToolWindow getToolWindow() {
     var toolWindowManager = ToolWindowManager.getInstance(project);
-    var toolWindow = toolWindowManager.getToolWindow("CodeGPT");
+    var toolWindow = toolWindowManager.getToolWindow("WeCode");
     // https://intellij-support.jetbrains.com/hc/en-us/community/posts/11533368171026/comments/11538403084562
     return Objects.requireNonNullElseGet(toolWindow, () -> toolWindowManager
         .registerToolWindow(RegisterToolWindowTask.closable(
-            "CodeGPT",
-            () -> "CodeGPT",
+            "WeCode",
+            () -> "WeCode",
             Icons.DefaultSmall,
             ToolWindowAnchor.RIGHT)));
   }

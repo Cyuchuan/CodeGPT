@@ -29,14 +29,14 @@ class CodeCompletionService {
     fun getSelectedModelCode(): String? {
         return when (service<GeneralSettings>().state.selectedService) {
             CODEGPT -> service<CodeGPTServiceSettings>().state.codeCompletionSettings.model
-            OPENAI -> "gpt-3.5-turbo-instruct"
+//            OPENAI -> "gpt-3.5-turbo-instruct"
             CUSTOM_OPENAI -> service<CustomServiceSettings>().state
                 .codeCompletionSettings
                 .body
                 .getOrDefault("model", null) as String
 
-            LLAMA_CPP -> LlamaModel.findByHuggingFaceModel(LlamaSettings.getCurrentState().huggingFaceModel).label
-            OLLAMA -> service<OllamaSettings>().state.model
+//            LLAMA_CPP -> LlamaModel.findByHuggingFaceModel(LlamaSettings.getCurrentState().huggingFaceModel).label
+//            OLLAMA -> service<OllamaSettings>().state.model
             else -> null
         }
     }
@@ -44,10 +44,10 @@ class CodeCompletionService {
     fun isCodeCompletionsEnabled(selectedService: ServiceType): Boolean =
         when (selectedService) {
             CODEGPT -> service<CodeGPTServiceSettings>().state.codeCompletionSettings.codeCompletionsEnabled
-            OPENAI -> OpenAISettings.getCurrentState().isCodeCompletionsEnabled
+//            OPENAI -> OpenAISettings.getCurrentState().isCodeCompletionsEnabled
             CUSTOM_OPENAI -> service<CustomServiceSettings>().state.codeCompletionSettings.codeCompletionsEnabled
-            LLAMA_CPP -> LlamaSettings.isCodeCompletionsPossible()
-            OLLAMA -> service<OllamaSettings>().state.codeCompletionsEnabled
+//            LLAMA_CPP -> LlamaSettings.isCodeCompletionsPossible()
+//            OLLAMA -> service<OllamaSettings>().state.codeCompletionsEnabled
             else -> false
         }
 
@@ -59,8 +59,8 @@ class CodeCompletionService {
             CODEGPT -> CompletionClientProvider.getCodeGPTClient()
                 .getCodeCompletionAsync(buildCodeGPTRequest(requestDetails), eventListener)
 
-            OPENAI -> CompletionClientProvider.getOpenAIClient()
-                .getCompletionAsync(buildOpenAIRequest(requestDetails), eventListener)
+//            OPENAI -> CompletionClientProvider.getOpenAIClient()
+//                .getCompletionAsync(buildOpenAIRequest(requestDetails), eventListener)
 
             CUSTOM_OPENAI -> createFactory(
                 CompletionClientProvider.getDefaultClientBuilder().build()
@@ -69,11 +69,11 @@ class CodeCompletionService {
                 OpenAITextCompletionEventSourceListener(eventListener)
             )
 
-            OLLAMA -> CompletionClientProvider.getOllamaClient()
-                .getCompletionAsync(buildOllamaRequest(requestDetails), eventListener)
+//            OLLAMA -> CompletionClientProvider.getOllamaClient()
+//                .getCompletionAsync(buildOllamaRequest(requestDetails), eventListener)
 
-            LLAMA_CPP -> CompletionClientProvider.getLlamaClient()
-                .getChatCompletionAsync(buildLlamaRequest(requestDetails), eventListener)
+//            LLAMA_CPP -> CompletionClientProvider.getLlamaClient()
+//                .getChatCompletionAsync(buildLlamaRequest(requestDetails), eventListener)
 
             else -> throw IllegalArgumentException("Code completion not supported for ${selectedService.name}")
         }

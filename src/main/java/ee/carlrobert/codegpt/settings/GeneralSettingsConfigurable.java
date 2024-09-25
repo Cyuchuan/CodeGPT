@@ -13,7 +13,7 @@ public class GeneralSettingsConfigurable implements Configurable {
   @Nls(capitalization = Nls.Capitalization.Title)
   @Override
   public String getDisplayName() {
-    return CodeGPTBundle.get("settings.displayName");
+    return "WeCode";
   }
 
   @Override
