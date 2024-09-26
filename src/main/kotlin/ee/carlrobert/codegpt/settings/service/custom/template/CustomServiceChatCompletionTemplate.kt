@@ -51,12 +51,12 @@ enum class CustomServiceChatCompletionTemplate(
         )
     ),
     OPENAI(
-        "https://api.openai.com/v1/chat/completions",
+        "http://172.16.153.234:3456/v1/chat/completions",
         getDefaultHeaders("Authorization", "Bearer \$CUSTOM_SERVICE_API_KEY"),
         getDefaultBodyParams(
             mapOf(
-                "model" to "gpt-4",
-                "max_tokens" to 1024
+                "model" to "Qwen1.5-32B-Chat",
+                "max_tokens" to 4096
             )
         )
     ),

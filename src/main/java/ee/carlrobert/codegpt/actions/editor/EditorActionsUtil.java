@@ -72,6 +72,9 @@ public class EditorActionsUtil {
         };
         group.add(action);
       });
+
+      CodeDownAction codeDownAction = new CodeDownAction("Unit Test", "单元测试代码下钻获取场景");
+      group.add(codeDownAction);
     }
   }
 

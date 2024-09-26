@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>ee.carlrobert.chatgpt</id>
     <name>WeCode</name>
-    <vendor email="carlrobertoh@gmail.com" url="https://carlrobert.ee">Carl-Robert Linnupuu</vendor>
+    <vendor email="atchen@webank.com" url="">atchen Carl-Robert Linnupuu</vendor>
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
     <depends optional="true" config-file="plugin-java.xml">com.intellij.modules.java</depends>

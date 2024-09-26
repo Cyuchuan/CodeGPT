@@ -136,8 +136,9 @@ class UserInputPanel(
 
         return panel {
             twoColumnsRow({
-                cell(modelComboBox).gap(RightGap.SMALL)
-                cell(attachImageLink).visibleIf(imageActionSupported)
+///todo                隐藏配置
+//                cell(modelComboBox).gap(RightGap.SMALL)
+//                cell(attachImageLink).visibleIf(imageActionSupported)
             }, {
                 panel {
                     row {
