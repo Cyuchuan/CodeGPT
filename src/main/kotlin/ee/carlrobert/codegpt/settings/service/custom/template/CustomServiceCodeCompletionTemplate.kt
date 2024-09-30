@@ -26,15 +26,16 @@ enum class CustomServiceCodeCompletionTemplate(
         getDefaultBodyParams(mapOf("model" to "accounts/fireworks/models/starcoder-16b"))
     ),
     OPENAI(
-        "https://api.openai.com/v1/completions",
+        "http://172.16.153.234:3456/v1/completions",
         getDefaultHeaders("Authorization", "Bearer \$CUSTOM_SERVICE_API_KEY"),
         mutableMapOf(
             "stream" to true,
             "prompt" to "\$PREFIX",
-            "suffix" to "\$SUFFIX",
-            "model" to "gpt-3.5-turbo-instruct",
-            "temperature" to 0.2,
-            "max_tokens" to 24
+//            不支持suffix
+//            "suffix" to "\$SUFFIX",
+            "model" to "Qwen1.5-32B-Chat",
+            "temperature" to 0.1,
+            "max_tokens" to 32
         )
     ),
     TOGETHER(
